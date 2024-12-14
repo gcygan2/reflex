@@ -1,3 +1,9 @@
+/*
+  Układ do pomiaru refleksu na dzień otwarty CEZ 13 grudnia 2024 r.
+  Copyright (c) 2024, Grzegorz Cygan
+  All rights reserved.
+*/
+
 #include "tm1637.h"
 
 uint32_t k;
