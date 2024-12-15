@@ -1,44 +1,41 @@
 #include "tm1637.h"
+#define GRZYBEK 15
+#define LED 2
 
-uint32_t k;
-volatile uint32_t cur;
-volatile uint8_t stop = 1, ponow = 0;
+volatile uint32_t start_ts, cur_ts;
+volatile uint8_t stop;
 
 void handleInterrupt ()
 {
-  if (digitalRead (15) == LOW) 
-  {
-    stop = 0;
-    ponow = 1;
-  } else {
-    digitalWrite (2, LOW);
-    stop = 1;
-  }
+  stop = 1;
+  cur_ts = millis();
+  digitalWrite (LED, LOW);
 }
+
 void setup() {
-  TM1637_init(1/*enable*/, 5/*brightness*/);
-  pinMode(15, INPUT_PULLUP);
-  pinMode(2, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(15), handleInterrupt, CHANGE);
+  TM1637_init(1/*enable*/, 5 /*brightness*/);
+  pinMode(GRZYBEK, INPUT_PULLUP);
+  pinMode(LED, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(GRZYBEK), handleInterrupt, FALLING);
 }
 
 void pokaz (uint32_t k2)
 {
   uint8_t n;
-    for (n = 0; n < 6; ++n) {
-      TM1637_display_digit(n, k2 % 10UL);
-      k2 /= 10UL;
-    }
+  for (n = 0; n < 6; ++n) {
+    TM1637_display_digit(n, k2 % 10UL);
+    k2 /= 10UL;
+  }
 }
 
 void loop() {
-  if (ponow && digitalRead(15) == LOW){
-    delay(1000 + (cur % 2000UL));
-    digitalWrite (2, HIGH);
-    cur = millis();
-    ponow = 0;
+  if (digitalRead(GRZYBEK) && stop){
+    delay(1000 + (start_ts % 2000UL));
+    digitalWrite (LED, HIGH);
+    start_ts = millis();
+    stop = 0;
   }
-  if (!stop) k = millis() - cur;
-  pokaz (k);
-  delay(1);
+  if (!stop) cur_ts = millis();
+  pokaz (cur_ts - start_ts);
+  delay(10); // this speeds up the simulation
 }
