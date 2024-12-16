@@ -8,16 +8,17 @@
 #include "tm1637.h"
 #define GRZYBEK 15
 #define LED 2
-
-const char* ssid = "TP-Link_3541";
-const char* password = "Mechatronik31wxD";
-WebServer server(80);
-void handleRoot() {
-  server.send(200, "text/html", "<h1>Witaj na serwerze ESP32!</h1>");
-}
-
 volatile uint32_t start_ts, cur_ts;
 volatile uint8_t stop;
+const char* ssid = "TP-LINK_EAD700";
+const char* password = "Skowronek";
+WebServer server(80);
+void handleRoot() {
+  String html= "<!DOCTYPE html>\n<html><head><meta http-equiv=\"refresh\" content=\"1\"></head><body><h1>" + String(cur_ts - start_ts) + "</h1></body></html>";
+  server.send(200, "text/html", html);
+}
+
+
 
 void handleInterrupt ()
 {
