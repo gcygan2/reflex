@@ -3,10 +3,18 @@
   Copyright (c) 2024, Grzegorz Cygan
   All rights reserved.
 */
-
+#include <WiFi.h>
+#include <WebServer.h>
 #include "tm1637.h"
 #define GRZYBEK 15
 #define LED 2
+
+const char* ssid = "TP-Link_3541";
+const char* password = "Mechatronik31wxD";
+WebServer server(80);
+void handleRoot() {
+  server.send(200, "text/html", "<h1>Witaj na serwerze ESP32!</h1>");
+}
 
 volatile uint32_t start_ts, cur_ts;
 volatile uint8_t stop;
@@ -23,6 +31,19 @@ void setup() {
   pinMode(GRZYBEK, INPUT_PULLUP);
   pinMode(LED, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(GRZYBEK), handleInterrupt, FALLING);
+
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Łączenie z WiFi..."); 
+  }
+  Serial.println("Połączono z WiFi");
+  Serial.print("Adres IP: ");
+  Serial.println(WiFi.localIP());
+  server.on("/", handleRoot);
+  server.begin();
+  Serial.println("Serwer uruchomiony");
 }
 
 void pokaz (uint32_t k2)
@@ -43,5 +64,6 @@ void loop() {
   }
   if (!stop) cur_ts = millis();
   pokaz (cur_ts - start_ts);
-  delay(10); // this speeds up the simulation
+  //delay(10); // this speeds up the simulation
+  server.handleClient();
 }
