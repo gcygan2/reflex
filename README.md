@@ -3,7 +3,7 @@
 ![schemat](https://github.com/gcygan2/reflex/blob/main/schemat.png)  
 [esp32](https://botland.com.pl/moduly-wifi-i-bt-esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html)
 
-Instalacja obsługi ESP32 w Arduino IDE
+## Instalacja obsługi ESP32 w Arduino IDE
 
 Otwórz Arduino IDE.
 
@@ -15,7 +15,7 @@ Kod
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 Kliknij OK.
 
-Dodanie płytek ESP32
+## Dodanie płytek ESP32
 
 Wejdź w Narzędzia → Płytka → Menedżer płytek.
 
@@ -27,7 +27,7 @@ Po instalacji wejdź w Narzędzia → Płytka → ESP32 Arduino.
 
 Wybierz DOIT ESP32 DEVKIT V1 – to jest właściwa opcja dla Twojej płytki ESP32 Devkit V1.
 
-Konfiguracja portu i upload
+## Konfiguracja portu i upload
 
 Podłącz płytkę przez USB.
 
