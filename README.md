@@ -4,9 +4,9 @@
 [esp32](https://botland.com.pl/moduly-wifi-i-bt-esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html)
 
 ## Instalacja obsługi ESP32 w Arduino IDE
-1.Otwórz Arduino IDE.
-1.Wejdź w Plik → Preferencje.
-1.W polu „Dodatkowe adresy URL menedżera płytek” dodaj: Kod
+1. Otwórz Arduino IDE.
+1. Wejdź w Plik → Preferencje.
+1. W polu „Dodatkowe adresy URL menedżera płytek” dodaj: Kod
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 Kliknij OK.
 
