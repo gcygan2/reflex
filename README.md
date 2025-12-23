@@ -1,13 +1,14 @@
 # Układ do pomiaru refleksu na dzień otwarty CEZ 13 grudnia 2024 r.
-<a href="https://www.tiktok.com/@cezstalowawola/video/7448272293739924758" target="_blank">tiktok</a>
+
 ![schemat](https://github.com/gcygan2/reflex/blob/main/schemat.png)  
-[esp32](https://botland.com.pl/moduly-wifi-i-bt-esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html)
 
 ## Instalacja obsługi ESP32 w Arduino IDE
 1. Otwórz Arduino IDE.
 1. Wejdź w Plik → Preferencje.
 1. W polu „Dodatkowe adresy URL menedżera płytek” dodaj: Kod
+'''
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+'''
 Kliknij OK.
 
 ## Dodanie płytek ESP32
@@ -21,3 +22,6 @@ Kliknij OK.
 1. Wybierz odpowiedni port w Narzędzia → Port.
 1. Wgraj przykładowy program (np. „Blink”).
 1. Jeśli pojawią się problemy z wgrywaniem, czasem trzeba nacisnąć przycisk BOOT podczas rozpoczynania uploadu, a następnie puścić go, gdy IDE zacznie przesyłać kod.
+
+[esp32](https://botland.com.pl/moduly-wifi-i-bt-esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html)
+![esp32](https://github.com/gcygan2/reflex/blob/main/esp32.png)  
